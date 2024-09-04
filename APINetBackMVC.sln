@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APINetBackMVC", "APINetBackMVC\APINetBackMVC.csproj", "{CCBBEEDB-0053-425D-96A7-967A7C34A83B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCBBEEDB-0053-425D-96A7-967A7C34A83B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCBBEEDB-0053-425D-96A7-967A7C34A83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCBBEEDB-0053-425D-96A7-967A7C34A83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCBBEEDB-0053-425D-96A7-967A7C34A83B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B90CE013-03C7-4628-B871-85CDDCE2B609}
+	EndGlobalSection
+EndGlobal

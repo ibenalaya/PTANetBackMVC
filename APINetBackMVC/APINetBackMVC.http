@@ -1,0 +1,6 @@
+@APINetBackMVC_HostAddress = http://localhost:5007
+
+GET {{APINetBackMVC_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
