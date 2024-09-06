@@ -2,8 +2,8 @@
 {
     public class Bank
     {
-        public string BIC { get; set; }
-        public string Country { get; set; }
-        public string Name { get; set; }
+        public required string BIC { get; set; } //Primary Key
+        public required string Country { get; set; }
+        public required string Name { get; set; }
     }
 }

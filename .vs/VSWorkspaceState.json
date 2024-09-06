@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\APINetBackMVC",
+    "\\APINetBackMVC\\Services"
   ],
-  "SelectedNode": "\\APINetBackMVC.sln",
+  "SelectedNode": "\\APINetBackMVC\\Services\\ApiService.cs",
   "PreviewInSolutionExplorer": false
 }

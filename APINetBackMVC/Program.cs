@@ -34,8 +34,7 @@ app.UseRouting();
 
 
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
