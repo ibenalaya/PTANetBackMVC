@@ -2,10 +2,12 @@ using APINetBackMVC.Data;
 using APINetBackMVC.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using AutoMapper;
+using APINetBackMVC.Mapping;
+using Microsoft.Extensions.DependencyInjection;
 
-var cultureInfo = CultureInfo.InvariantCulture;
-CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
-CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture; ;
+CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture; ;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +23,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     )
 );
 
+
+
 builder.Services.AddHttpClient();
 builder.Services.AddControllers();
 builder.Services.AddScoped<ApiService>();
@@ -29,12 +33,14 @@ builder.Services.AddScoped<BankService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddControllersWithViews();
+
 var app = builder.Build();
 app.UseRouting();
 
 
-
-// (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
@@ -45,5 +51,9 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

@@ -1,14 +1,17 @@
 ﻿using APINetBackMVC.Data;
 using APINetBackMVC.Models;
+using APINetBackMVC.Models.Dtos;
 using APINetBackMVC.Models.Entities;
+using AutoMapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace APINetBackMVC.Services
 {
-    public class BankService(ApplicationDbContext context)
+    public class BankService(ApplicationDbContext context, IMapper mapper)
     {
         private readonly ApplicationDbContext _context = context;
+        private readonly IMapper _mapper = mapper;
 
         public async Task<OperationResult> SaveDataToDatabase(List<Bank> bankList)
         {
@@ -30,10 +33,13 @@ namespace APINetBackMVC.Services
             }
         }
 
-        public async Task<Bank> GetBankByIdAsync(string country)
+        public async Task<BankDto> GetBankByIdAsync(string country)
         {
             var bank = await _context.Banks.FindAsync(country);
-            return bank; // return the registry
+            var bankDtoAux = _mapper.Map<BankDto>(bank);//Mapping data base results to use
+         
+            return bankDtoAux;// return the registry
+              
         }
 
     }

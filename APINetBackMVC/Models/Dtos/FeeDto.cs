@@ -1,6 +1,6 @@
-﻿namespace APINetBackMVC.Models.Entities
+﻿namespace APINetBackMVC.Models.Dtos
 {
-    public class Fees
+    public class FeeDto
     {
         public int Id { get; set; } // Primary Key
         public DateTime Timestamp { get; set; }
@@ -11,7 +11,5 @@
         public decimal? PeakLoadFee { get; set; }
         public decimal? VolumeFee { get; set; }
         public decimal WeeklyFee { get; set; }
-
-
     }
 }

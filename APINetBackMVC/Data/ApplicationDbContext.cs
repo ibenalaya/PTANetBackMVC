@@ -11,7 +11,7 @@ namespace APINetBackMVC.Data
         {
         }
 
-        public DbSet<Fees> Fees { get; set; }
+        public DbSet<Fee> Fees { get; set; }
         public DbSet<Bank> Banks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -20,7 +20,7 @@ namespace APINetBackMVC.Data
             base.OnModelCreating(modelBuilder);
 
             // Configure the primary key explicitly
-            modelBuilder.Entity<Fees>()
+            modelBuilder.Entity<Fee>()
                 .HasKey(f => f.Id);
 
             modelBuilder.Entity<Bank>(entity =>

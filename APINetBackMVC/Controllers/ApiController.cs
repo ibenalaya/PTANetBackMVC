@@ -1,4 +1,5 @@
-﻿using APINetBackMVC.Models.Entities;
+﻿using APINetBackMVC.Models.Dtos;
+using APINetBackMVC.Models.Entities;
 using APINetBackMVC.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -64,21 +65,21 @@ namespace APINetBackMVC.Controllers
 
         // GET: api/Banks/SE
         [HttpGet("bank/{bic}")]
-        public async Task<ActionResult<Bank>> GetBank(string bic)
+        public async Task<ActionResult<BankDto>> GetBank(string bic)
         {
-            var bank = await _banksService.GetBankByIdAsync(bic);  //Look for the registry by primary key
-
+            var bank = await _banksService.GetBankByIdAsync(bic);//Look for the registry by primary key    
             if (bank == null)
             {
                 return NotFound();  //Return 404 if registry is not found
             }
 
+            //return View(bank);
             return Ok(bank);  //Return the registry
         }
 
         // GET: api/Fees/5
         [HttpGet("Fees/{id}")]
-        public async Task<ActionResult<Fees>> GetFees(int id)
+        public async Task<ActionResult<FeeDto>> GetFees(int id)
         {
             var fee = await _feesService.GetFeeByIdAsync(id);  //Look for the registry by primary key
 
@@ -87,6 +88,7 @@ namespace APINetBackMVC.Controllers
                 return NotFound();  //Return 404 if registry is not found
             }
 
+            //return View(fee);
             return Ok(fee);  //Return the registry
         }
     }

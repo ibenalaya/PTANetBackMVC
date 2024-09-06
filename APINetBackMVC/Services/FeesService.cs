@@ -1,16 +1,19 @@
 ﻿using APINetBackMVC.Data;
 using APINetBackMVC.Models;
+using APINetBackMVC.Models.Dtos;
 using APINetBackMVC.Models.Entities;
+using AutoMapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace APINetBackMVC.Services
 {
-    public class FeesService(ApplicationDbContext context)
+    public class FeesService(ApplicationDbContext context, IMapper mapper)
     {
         private readonly ApplicationDbContext _context = context;
+        private readonly IMapper _mapper = mapper;
 
-        public async Task<OperationResult> SaveDataToDatabase(List<Fees> feesList)
+        public async Task<OperationResult> SaveDataToDatabase(List<Fee> feesList)
         {
             try
             {
@@ -30,10 +33,12 @@ namespace APINetBackMVC.Services
                 return new OperationResult { Success = false, ErrorMessage = "There was an error saving the data", StatusCode = -1 };
             }
         }
-        public async Task<Fees> GetFeeByIdAsync(int id)
+        public async Task<FeeDto> GetFeeByIdAsync(int id)
         {
             var fee = await _context.Fees.FindAsync(id);
-            return fee;  // return the registry
+            var feeDto = _mapper.Map<FeeDto>(fee);//Mapping data base results to use
+
+            return feeDto;  // return the registry
         }
 
 

@@ -12,13 +12,13 @@ namespace APINetBackMVC.Services
             _httpClient = httpClient;
         }
 
-        public async Task<List<Fees>> GetFeesFromApi()
+        public async Task<List<Fee>> GetFeesFromApi()
         {
             var response = await _httpClient.GetAsync("https://api.opendata.esett.com/EXP05/Fees");
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();
-            var feesList = JsonConvert.DeserializeObject<List<Fees>>(json);
+            var feesList = JsonConvert.DeserializeObject<List<Fee>>(json);
 
             return feesList ?? throw new Exception("Failed to deserialize the response from the API.");
         }
@@ -30,7 +30,7 @@ namespace APINetBackMVC.Services
 
                 var json = await response.Content.ReadAsStringAsync();
                 var banksList = JsonConvert.DeserializeObject<List<Bank>>(json);
-
+                
                 return banksList ?? throw new Exception("Failed to deserialize the response from the API.");
      
         }
